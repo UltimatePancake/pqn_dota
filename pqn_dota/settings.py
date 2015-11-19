@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'pqn_dota.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pqn_dota',
         'USER': 'root',
         'PASSWORD': 'root',
