@@ -27,11 +27,21 @@ def populate_detail(mid, pid):
             p = dota.factory.player_get_byid(player)
             m = dota.factory.match_get_byid(mid)
             dota.factory.detail_put(m, p,
-                                    detail['hero_name'], detail['level'],
-                                    detail['kills'], detail['deaths'], detail['assists'],
-                                    detail['last_hits'], detail['denies'],
-                                    detail['hero_damage'], detail['tower_damage'],
-                                    detail['item_0_name'], detail['item_1_name'], detail['item_2_name'], detail['item_3_name'], detail['item_4_name'], detail['item_5_name'],
+                                    detail['hero_name'],
+                                    detail['level'],
+                                    detail['kills'],
+                                    detail['deaths'],
+                                    detail['assists'],
+                                    detail['last_hits'],
+                                    detail['denies'],
+                                    detail['hero_damage'],
+                                    detail['tower_damage'],
+                                    detail['item_0_name'],
+                                    detail['item_1_name'],
+                                    detail['item_2_name'],
+                                    detail['item_3_name'],
+                                    detail['item_4_name'],
+                                    detail['item_5_name'],
                                     details['game_mode_name'])
     print '--- Finished detail import for match ' + str(mid)
 
@@ -39,6 +49,6 @@ def populate_detail(mid, pid):
 players = dota.factory.player_get_allid()
 for player in players:
     populate_matches(player)
-    p = dota.factory.player_get_byid(player)
-    for m in dota.factory.match_get_byplayer(p):
-        populate_detail(m, player)
+    # p = dota.factory.player_get_byid(player)
+    # for m in dota.factory.match_get_byplayer(p):
+    #     populate_detail(m, player)
