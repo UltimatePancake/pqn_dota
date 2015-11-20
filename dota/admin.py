@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Player
-from .models import Match
-from .models import Detail
+from .models import Player, Match, Detail
 
-admin.site.register(Player)
+class PlayerAdmin(admin.ModelAdmin):
+	list_display = ('name','player_id')
+admin.site.register(Player, PlayerAdmin)
 admin.site.register(Match)
 admin.site.register(Detail)
