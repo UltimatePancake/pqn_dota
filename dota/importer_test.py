@@ -1,3 +1,6 @@
+"""
+Importer print test
+"""
 import os
 import django
 import dota.factory
@@ -7,23 +10,25 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'dota.settings'
 django.setup()
 
 API_KEY = 'CC538567909A04C219251543B4556442'
-api = dota2api.Initialise(API_KEY)
+DOTA_API = dota2api.Initialise(API_KEY)
 
 
 def populate_matches(pid):
-    hist = api.get_match_history(account_id=pid)
+    """ Print all matches for given player ID """
+    hist = DOTA_API.get_match_history(account_id=pid)
     for match in hist['matches']:
-        m = match['match_id']
-        p = dota.factory.player_get_byid(pid)
-        print 'p = ' + str(p) + ', m = ' + str(m)
-    print '--- Finished match import for ' + str(p)
+        str_match = match['match_id']
+        obj_player = dota.factory.player_get_byid(pid)
+        print 'p = ' + str(obj_player) + ', m = ' + str(str_match)
+    print '--- Finished match import for ' + str(obj_player)
 
 
 def populate_detail(mid, pid):
-    details = api.get_match_details(match_id=mid)
+    """ Print all details for given match ID """
+    details = DOTA_API.get_match_details(match_id=mid)
     for detail in details['players']:
-        player = detail['account_id']
-        if player == pid:
+        player_id = detail['account_id']
+        if player_id == pid:
             print detail['hero_name']
             print detail['level']
             print detail['kills']
@@ -49,8 +54,8 @@ def populate_detail(mid, pid):
     print '--- Finished detail import for match ' + str(mid)
 
 
-players = dota.factory.player_get_allid()
-for player in players:
+PLAYERS = dota.factory.player_get_allid()
+for player in PLAYERS:
     populate_matches(player)
     p = dota.factory.player_get_byid(player)
     for m in dota.factory.match_get_byplayer(p):

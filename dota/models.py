@@ -1,9 +1,15 @@
+"""
+Models file for database structure
+"""
 from django.db import models
 
 
 # Create your models here.
 # PLAYERS
 class Player(models.Model):
+    """
+    Players table
+    """
     player_id = models.IntegerField(default=0)
     name = models.CharField(max_length=16)
 
@@ -13,6 +19,9 @@ class Player(models.Model):
 
 # MATCH HISTORY HEAD
 class Match(models.Model):
+    """
+    Matches table
+    """
     match_id = models.IntegerField(default=0)
     player = models.ForeignKey(Player)
 
@@ -22,6 +31,9 @@ class Match(models.Model):
 
 # MATCH HISTORY DETAIL
 class Detail(models.Model):
+    """
+    Match details table
+    """
     match = models.ForeignKey(Match)
     player = models.ForeignKey(Player)
     hero = models.CharField(max_length=24)
@@ -33,12 +45,12 @@ class Detail(models.Model):
     denies = models.IntegerField(default=0)
     hero_dmg = models.IntegerField(default=0)
     tower_dmg = models.IntegerField(default=0)
-    item1 = models.CharField(max_length=36)
-    item2 = models.CharField(max_length=36)
-    item3 = models.CharField(max_length=36)
-    item4 = models.CharField(max_length=36)
-    item5 = models.CharField(max_length=36)
-    item6 = models.CharField(max_length=36)
+    item1 = models.CharField(max_length=36, default='')
+    item2 = models.CharField(max_length=36, default='')
+    item3 = models.CharField(max_length=36, default='')
+    item4 = models.CharField(max_length=36, default='')
+    item5 = models.CharField(max_length=36, default='')
+    item6 = models.CharField(max_length=36, default='')
     mode = models.CharField(max_length=36)
 
     def __int__(self):
