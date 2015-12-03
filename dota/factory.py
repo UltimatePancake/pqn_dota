@@ -98,4 +98,8 @@ def detail_get_byplayer(pid):
     return Detail.objects.filter(player=pid)
 
 
-# def noob_get():
+def noob_get_week():
+    """ Return player/match with the most deaths within the week """
+
+def noob_get_month():
+    """ Return player/match with the most deaths within the month """

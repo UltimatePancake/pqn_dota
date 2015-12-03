@@ -10,7 +10,7 @@ import dota2api
 os.environ['DJANGO_SETTINGS_MODULE'] = 'dota.settings'
 django.setup()
 
-API_KEY = 'CC538567909A04C219251543B4556442'
+API_KEY = 'YOURAPIKEY'
 DOTA_API = dota2api.Initialise(API_KEY)
 
 
