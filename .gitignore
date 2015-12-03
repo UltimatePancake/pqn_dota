@@ -7,7 +7,6 @@
 *.o
 *.so
 *.pyc
-importer.py
 
 # Packages #
 ############
@@ -37,3 +36,7 @@ importer.py
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# MISC #
+########
+dota/importer.py
