@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
-from dota import views
+import dota.views
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^home/', TemplateView.as_view(template_name='home.html')),
-    url(r'^player/(?P<player_id>[0-9]+)/', views.player, name='player'),
-    url(r'^match/(?P<match_id>[0-9]+)/', views.match, name='match'),
-    url(r'^detail/(?P<match>[0-9]+)/', views.detail, name='detail'),
+    url(r'^players/',  dota.views.ListPlayersView.as_view(),name='player_list',),
+    url(r'^player/(?P<player_id>[0-9]+)/', dota.views.player, name='player'),
+    url(r'^match/(?P<match_id>[0-9]+)/', dota.views.match, name='match'),
+    url(r'^detail/(?P<match>[0-9]+)/', dota.views.detail, name='detail'),
 ]
